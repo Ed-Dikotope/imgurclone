@@ -1,0 +1,22 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <Page.actionBar>
+    <ActionBar>
+      <StackLayout horizontalAlignment="center" orientation="horizontal">
+        <Label style="font-weight: bold;" visibility="{{ loading ? 'collapse' : 'visible' }}"  text="{{ loading ? '' : 'ImgUR Clone' }}" />
+        <ActivityIndicator visibility="{{ loading ? 'visible' : 'collapse' }}"  busy="{{loading}}" />
+        <Label visibility="{{ loading ? 'visible' : 'collapse' }}"  text="{{ loading ? '  Loading...' : '' }}" />
+      </StackLayout>
+    </ActionBar>
+  </Page.actionBar>
+  <StackLayout>
+
+    <ListView items="{{ topics }}" itemTap="{{openTopic}}">
+      <ListView.itemTemplate>
+        <StackLayout class="topic">
+          <Label text="{{ name }}" class="topic-title" />
+          <Label text="{{ description }}" />
+        </StackLayout>
+      </ListView.itemTemplate>
+    </ListView>
+  </StackLayout>
+</Page>

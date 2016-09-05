@@ -1,0 +1,23 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <Page.actionBar>
+    <ActionBar title="ImgUR Clone">
+      <NavigationButton text="Back" android.systemIcon="ic_menu_back" tap="{{backToTopics}}"/>
+      <ActionItem text="Random" tap="{{pickRandomItems}}" ios.position="right"/>
+    </ActionBar>
+  </Page.actionBar>
+
+  <GridLayout width="100%" height="100%">
+
+    <ActivityIndicator busy="{{loading}}" visibility="{{ loading ? 'visible' : 'collapse' }}" />
+
+    <ListView visibility="{{ loading ? 'collapse' : 'visible' }}" items="{{photos}}" itemTap="{{viewImage}}">
+      <ListView.itemTemplate>
+        <StackLayout class="photo-container">
+          <Image src="{{ 'https://i.imgur.com/' + id + 'm.jpg' }}" class="photo" stretch="aspectFit"/>
+          <Label text="{{title}}" textWrap="true" />
+        </StackLayout>
+      </ListView.itemTemplate>
+    </ListView>
+
+  </GridLayout>
+</Page>
